@@ -1,64 +1,83 @@
-# Custom Icon Pack — Template
+# YL Vault — Custom Icon Packs
 
-A ready-to-use icon pack for **[YL Vault](https://github.com/sawyelin1011/ylvault-webapp)**. Upload this whole folder to a GitHub repository, then import it straight from the app's collection create/edit picker.
+A curated collection of SVG icon **packs** for [YL Vault](https://github.com/sawyelin1011/ylvault-webapp). Each pack is a themed folder you import straight from the app's collection picker.
 
-> One **folder** = one pack. Each **`.svg` file** = one icon. `manifest.json` is optional and only adds friendly names + search keywords.
+> **One leaf folder = one importable pack.** Every pack has its own `manifest.json` for friendly names + search keywords.
 
 ---
 
 ## Structure Tree
 
 ```
-icon-pack-template/
-├── manifest.json          # optional: pack name/description + per-icon labels & keywords
-└── icons/                 # the "path (folder)" you enter in the app's import form
-    ├── folder.svg         # each .svg becomes one pickable icon
-    ├── star.svg
-    └── target.svg
+ylvault-icons/
+├── README.md
+└── icons/                     # parent category folders (each = a separate pack)
+    ├── folders/               #  → pack "Folders"
+    │   ├── manifest.json
+    │   └── folder.svg
+    ├── favorites/             #  → pack "Favorites"
+    │   ├── manifest.json
+    │   └── star.svg
+    └── goals/                 #  → pack "Goals"
+        ├── manifest.json
+        └── target.svg
 ```
 
-## How to import it in the app
+## How to import a pack in the app
 
-1. Create a new collection, or right-click an existing one → **Color / Icon**.
+1. Create a collection, or right-click an existing one → **Color / Icon**.
 2. Click **Import from GitHub**.
 3. Fill in:
-   - **Repo URL** — e.g. `https://github.com/you/my-icons`
-   - **Path (folder)** — `icons` (or leave the specific subfolder, e.g. `icons/social`)
+   - **Repo URL** — `https://github.com/sawyelin1011/ylvault-icons`
+   - **Path (folder)** — the pack you want, e.g. `icons/goals`
    - **Branch** — `main`
-   - **Pack name** — what to call it, e.g. `My Icons`
-4. **Fetch icons** → the pack is cached locally, then choose any icon from the "Custom icons / packs" section (uses the same search box as the built-in ones).
+   - **Pack name** — anything, e.g. `Goals`
+4. **Fetch icons** → cached locally, then pick from the "Custom icons / packs" section (shares the built-in search box).
 
-The collection saves a reference (`iconCustom`) and renders the icon tinted to its color. It works offline after the first import.
+Import a pack once per collection modal as needed — each category folder is independent.
 
 ---
 
-## Adding / extending icons
+## Adding a new category pack
 
-To add a new icon, just drop an `.svg` file into the `icons/` folder — no manifest changes required.
+1. Create a folder: `icons/<new-category>/`.
+2. Drop your `.svg` files into it.
+3. (Optional) Add a `manifest.json` for a nicer label + search keywords.
 
 ```
 icons/
-└── rocket.svg      ← new icon, name auto-becomes "Rocket"
+└── rockets/
+    ├── manifest.json
+    ├── rocket.svg
+    └── shuttle.svg
 ```
 
-If you want a friendlier label or search keywords, also add it to `manifest.json`:
+`manifest.json`:
 
 ```json
 {
+  "name": "Rockets",
+  "description": "Launch and space icons.",
   "icons": {
-    "rocket": {
-      "name": "Rocket",
-      "keywords": ["launch", "project", "ship", "startup"]
-    }
+    "rocket":  { "name": "Rocket",  "keywords": ["launch", "ship", "startup"] },
+    "shuttle": { "name": "Shuttle", "keywords": ["space", "orbit"] }
   }
 }
 ```
+
+Keys must match SVG filenames without `.svg`. Everything is optional — icons work with no manifest.
+
+---
+
+## Adding an icon to an existing pack
+
+Just drop a `.svg` into that pack's folder and optionally add a `manifest.json` entry. Then **re-import** the pack in the app to refresh it.
 
 ---
 
 ## Icon authoring rules (important)
 
-To render **correctly tinted** with a collection's color, prefer SVGs that use `currentColor`:
+Prefer SVGs that use `currentColor` so they tint to the collection's color:
 
 ```xml
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
@@ -69,38 +88,16 @@ To render **correctly tinted** with a collection's color, prefer SVGs that use `
 ```
 
 - `stroke="currentColor"` / `fill="currentColor"` → tints to the collection color.
-- Explicit hex colors (e.g. `fill="#000"`) are rewritten to `currentColor` on import, so they tint too.
-- Multi-color brand logos will render as a **single tint** — that's expected for folder icons.
+- Explicit hex colors (`fill="#000"`) are rewritten to `currentColor` on import, so they tint too.
+- Multi-color logos render as a single tint (expected for folder icons).
 
-### Do NOT include (stripped on import for security)
-- `<script>`, `onclick`/`onerror`/any `on*` attributes
+### Stripped on import (for security) — do NOT include
+- `<script>`, any `on*` attribute
 - `href="javascript:..."` or `data:` URLs
 - `<foreignObject>`, external `<use href="...">`, `<style>` blocks, CDATA
 
 ---
 
-## `manifest.json` reference
-
-```json
-{
-  "name": "Pack name shown in the picker",
-  "description": "Optional, shown as context",
-  "icons": {
-    "<file-without-.svg>": {
-      "name": "Display name",
-      "keywords": ["search", "terms", "here"]
-    }
-  }
-}
-```
-
-- Keys must match SVG filenames **without** the `.svg` extension.
-- `name` — shown in the picker tooltip.
-- `keywords` — extra search words (searched alongside `name` and filename).
-- Everything is optional; icons work even with no manifest.
-
----
-
 ## License
 
-Keep attribution / license files that came with the original icon set. This template's example SVGs are derived from common open-source icon shapes (see your set's license terms).
+Keep attribution / license files from the original icon set. Example SVGs here are simple common shapes for illustration.

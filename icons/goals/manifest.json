@@ -1,0 +1,10 @@
+{
+  "name": "Goals",
+  "description": "Target, mission and focus icons.",
+  "icons": {
+    "target": {
+      "name": "Target",
+      "keywords": ["goal", "aim", "focus", "mission"]
+    }
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "name": "Folders",
+  "description": "File-system and folder icons.",
+  "icons": {
+    "folder": {
+      "name": "Folder",
+      "keywords": ["directory", "bucket", "group"]
+    }
+  }
+}

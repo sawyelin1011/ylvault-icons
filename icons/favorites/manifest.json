@@ -1,0 +1,10 @@
+{
+  "name": "Favorites",
+  "description": "Rating and favorite-style icons.",
+  "icons": {
+    "star": {
+      "name": "Star",
+      "keywords": ["favorite", "favourite", "rating", "bookmark"]
+    }
+  }
+}
