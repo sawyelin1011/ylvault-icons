@@ -1,0 +1,18 @@
+{
+  "name": "My Icons",
+  "description": "Example icon pack for YL Vault. Copy this folder to a GitHub repo and import it from the collection color/icon picker.",
+  "icons": {
+    "folder": {
+      "name": "Folder",
+      "keywords": ["directory", "bucket", "group"]
+    },
+    "star": {
+      "name": "Star",
+      "keywords": ["favorite", "favourite", "rating", "bookmark"]
+    },
+    "target": {
+      "name": "Target",
+      "keywords": ["goal", "aim", "focus", "mission"]
+    }
+  }
+}
