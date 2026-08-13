@@ -1,0 +1,10 @@
+{
+  "name": "Python",
+  "description": "Python Code icons.",
+  "icons": {
+    "all": {
+      "name": "Python",
+      "keywords": ["code", "language", "group"]
+    }
+  }
+}
